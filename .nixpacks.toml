@@ -3,7 +3,12 @@ nixPkgs = ["php82", "composer", "git", "unzip"]
 
 [phases.build]
 workingDirectory = "backend"
-cmds = ["composer install --no-dev --optimize-autoloader"]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "php artisan migrate --force",
+  "php artisan db:seed --force"
+]
+
 
 [phases.start]
 workingDirectory = "backend"
