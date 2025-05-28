@@ -1,3 +1,6 @@
+[variables]
+PHP_VERSION = "8.2"
+
 [phases.setup]
 nixPkgs = ["php82", "composer", "git", "unzip"]
 
