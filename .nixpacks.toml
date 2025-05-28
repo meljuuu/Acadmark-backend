@@ -12,4 +12,14 @@ cmds = [
 
 [phases.start]
 workingDirectory = "backend"
-cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = """
+echo '--- Starting Laravel app on Railway ---' && \
+echo 'Running migrations...' && \
+php artisan migrate --force && \
+echo 'Migrations complete.' && \
+echo 'Running seeders...' && \
+php artisan db:seed --force && \
+echo 'Seeders complete.' && \
+echo 'Starting Laravel server...' && \
+php artisan serve --host=0.0.0.0 --port=$PORT
+"""
