@@ -7,12 +7,9 @@ nixPkgs = ["php82", "composer", "git", "unzip"]
 [phases.build]
 workingDirectory = "backend"
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
-  "php artisan migrate --force",
-  "php artisan db:seed --force"
+  "composer install --no-dev --optimize-autoloader"
 ]
-
 
 [phases.start]
 workingDirectory = "backend"
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"
