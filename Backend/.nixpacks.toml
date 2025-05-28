@@ -7,18 +7,12 @@ nixPkgs = ["php82", "composer", "git", "unzip"]
 [phases.build]
 workingDirectory = "backend"
 cmds = [
-  "composer install --no-dev --optimize-autoloader"
+  "composer install --no-dev --optimize-autoloader",
+  "php artisan migrate --force",
+  "php artisan db:seed --force",
+  "mysql -h mysql.railway.internal -P 3306 -u root -pmCnEspvjatinzWZreSPggpZUPuKIkXrn railway -e 'SHOW TABLES;'"
 ]
 
 [phases.start]
 workingDirectory = "backend"
-cmd = 'sh -c "
-  echo Running migrations... &&
-  php artisan migrate --force &&
-  echo Migrations complete &&
-  echo Seeding database... &&
-  php artisan db:seed --force &&
-  echo Seeding complete &&
-  echo Starting server... &&
-  php artisan serve --host=0.0.0.0 --port=$PORT
-"'
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
