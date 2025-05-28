@@ -12,4 +12,4 @@ cmds = [
 
 [phases.start]
 workingDirectory = "backend"
-cmd = "../railway-start.sh"
+cmd = "./railway-start.sh"
