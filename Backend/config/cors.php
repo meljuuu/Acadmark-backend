@@ -15,32 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    'allowed_origins' => ['https://acadmark-production.up.railway.app'],
 
-    'allowed_origins' => [
-        'http://localhost:3000',
-        'http://localhost:5173',
-        'https://acadmark-frontend-production.up.railway.app',
-        'https://acadmark.vercel.app'
-    ],
+    'allowed_methods' => ['*'],
 
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => [
-        'X-Requested-With',
-        'Content-Type',
-        'Accept',
-        'Authorization',
-        'X-CSRF-TOKEN',
-        'X-XSRF-TOKEN',
-        'X-API-KEY'
-    ],
-
-    'exposed_headers' => [],
-
-    'max_age' => 86400, // 24 hours
+    'allowed_headers' => ['*'],
 
     'supports_credentials' => true,
 
